@@ -11,6 +11,7 @@ import (
 	"net/url"
 	"strings"
 	"time"
+	"flag"
 )
 
 var (
@@ -24,6 +25,9 @@ func init() {
 }
 
 func main() {
+	addr := flag.String("addr", "0.0.0.0:5999", "server address")
+	flag.Parse()
+
 	defer func() {
 		_ = Cache.Close()
 		_ = LevelDB.Close()
@@ -50,7 +54,7 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"code": 0, "files": files})
 	})
 
-	log.Fatal(r.Run(":5999"))
+	log.Fatal(r.Run(*addr))
 }
 
 func UploadHandler(c *gin.Context) {

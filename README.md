@@ -16,7 +16,7 @@ simple golang cdn
 ## Usage
 
 ```go
-go run main.go // default listen at 0.0.0.0:5999
+go run main.go --addr=0.0.0.0:5999 // default listen at 0.0.0.0:5999
 ```
 
 
