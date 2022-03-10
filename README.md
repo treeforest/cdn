@@ -1,0 +1,2 @@
+# cdn
+simple golang cdn
