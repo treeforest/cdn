@@ -26,7 +26,14 @@ func init() {
 
 func main() {
 	addr := flag.String("addr", "0.0.0.0:5999", "server address")
+	mode := flag.String("mode", "release", "gin mode")
 	flag.Parse()
+
+	if *mode == "debug" {
+		gin.SetMode(gin.DebugMode)
+	} else {
+		gin.SetMode(gin.ReleaseMode)
+	}
 
 	defer func() {
 		_ = Cache.Close()
